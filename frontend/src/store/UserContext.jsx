@@ -20,7 +20,7 @@ function UserProvider({ children }) {
         })
             .then(res => res.json())
             .then(data => {
-                alert(data?.error || "Authentication successful!");
+                alert(data?.error || "¡Registro exitoso!");
                 setToken(data.token)
                 localStorage.setItem("token", token)
                 setEmail(data.email)
@@ -29,9 +29,7 @@ function UserProvider({ children }) {
     }
 
     function getProfile() {
-        // setToken(localStorage.getItem("token")); Se sale la página de profile
-        //  (posiblemente por el redireccionamiento que sucede por protección
-        // cuando no hay token)
+        setToken(localStorage.getItem("token"));
         if (token) {
             fetch("http://localhost:5000/api/auth/me", {
                 method: "GET",
@@ -42,7 +40,7 @@ function UserProvider({ children }) {
                 .then(res => res.json())
                 .then(data => {
                     setEmail(data.email)
-                    console.log(data, token)
+                    // console.log("getprofiledata", data, "getprofiletoken", token)
                     return data
                 })
                 .catch(error => console.error('Error al buscar usuario', error))
@@ -68,10 +66,10 @@ function UserProvider({ children }) {
         })
             .then(res => res.json())
             .then(data => {
-                alert(data?.error || "Authentication successful!");
+                alert(data?.error || "¡Login exitoso!");
                 setToken(data.token)
-                console.log(data)
-                // localStorage.setItem("token", token)
+                // console.log("logindata", data)
+                localStorage.setItem("token", data.token)
             })
     }
 

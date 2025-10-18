@@ -1,13 +1,11 @@
 import { useContext } from 'react';
 import { UserContext } from './../../../store/UserContext.jsx';
-import { useNavigate } from 'react-router-dom'
 import useInput from './../../customHooks/useInput.jsx'
 
 function LoginPage() {
     const email = useInput('');
     const password = useInput('');
     const { login } = useContext(UserContext);
-    const navigate = useNavigate();
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -20,7 +18,6 @@ function LoginPage() {
             return;
         }
         login(email.value, password.value);
-        navigate('/profile', { replace: true })
     }
 
     return (

@@ -5,7 +5,6 @@ import { useEffect } from "react"
 function Profile() {
     const { email, getProfile } = useContext(UserContext);
     const { logout } = useContext(UserContext);
-    console.log(email)
 
     useEffect(
         () => getProfile()

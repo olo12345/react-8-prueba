@@ -23,7 +23,6 @@ function RegisterPage() {
             return;
         }
         register(email.value, password.value);
-        alert('Registro exitoso');
     }
     return (
         <form className="max-w-md mx-auto my-10 p-6 border border-gray-300 rounded-xl bg-blue-300">
